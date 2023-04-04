@@ -1,12 +1,11 @@
 def two_sum(nums: list[int], target: int):
+    contains = {}
     for i in range(len(nums)):
-        for y in range(len(nums)):
-            if y == 0:
-                continue
-            if (nums[i] + nums[y]) == target:
-                if i == y:
-                    continue
-                return [i, y]
+        remains = target - nums[i]
+        if remains in contains:
+            return [contains[remains], i]
+        else:
+            contains[nums[i]] = i
 
 
 def unit_tests():
